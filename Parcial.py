@@ -21,7 +21,7 @@ def mostrar_nombre_jugadores(lista_jugadores):
   # El código anterior itera a través de una lista de diccionarios llamada "lista_jugadores" e imprime
   # el nombre y la posición de cada jugador. La función "enumerar" se usa para obtener el índice de
   # cada jugador en la lista, y el parámetro "iniciar" se establece en 1 para comenzar el índice en 1
-  # en lugar de 0. El nombre y la posición del jugador se imprimen luego usando formato de cadena.
+  # en lugar de 0. El nombre y la posición del jugador se imprimen luego usando formato de cadena
     for i, jugador in enumerate(lista_jugadores, start=1):
         nombre = jugador["nombre"]
         posicion = jugador["posicion"]
