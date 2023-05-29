@@ -106,7 +106,7 @@ def calculo_promedio(lista_jugadores:list[dict],sub_clave:str):
     :type sub_clave: str
     :return: el valor de la variable "promedio", que representa la media de una determinada estadística
     ("sub_clave") para todos los jugadores de la lista de entrada "lista_jugadores". Si la lista de
-    entrada está vacía, la función no ejecutará el ciclo y devolverá Ninguno.
+    entrada está vacía, la función no ejecutará el ciclo y devolverá Ninguno
     """
     acomulador = 0
     contador = 0
