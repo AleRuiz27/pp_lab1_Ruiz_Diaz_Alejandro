@@ -1,3 +1,9 @@
+#Alumno: Miguel Alejandro Ruiz Diaz
+#Division: H
+#Profesor Tutor: Facundo
+#DNI: 39136939
+
+
 import json
 import csv
 import re
@@ -12,6 +18,10 @@ with open("dt.json") as jugadores_file:
   
 
 def mostrar_nombre_jugadores(lista_jugadores):
+  # El código anterior itera a través de una lista de diccionarios llamada "lista_jugadores" e imprime
+  # el nombre y la posición de cada jugador. La función "enumerar" se usa para obtener el índice de
+  # cada jugador en la lista, y el parámetro "iniciar" se establece en 1 para comenzar el índice en 1
+  # en lugar de 0. El nombre y la posición del jugador se imprimen luego usando formato de cadena.
     for i, jugador in enumerate(lista_jugadores, start=1):
         nombre = jugador["nombre"]
         posicion = jugador["posicion"]
@@ -445,35 +455,7 @@ def jugador_con_mas_temporadas(lista_jugadores):
     else:
         print("No se encontraron jugadores.")
 
-"""
-def mostrar_jugadores_superiores_porcentaje(lista_jugadores: List[Dict[str, any]]):
-    # El código anterior solicita al usuario que ingrese un valor porcentual, filtra una lista de
-    # jugadores de baloncesto en función de que su porcentaje de tiros de campo sea mayor que el valor
-    # ingresado, ordena la lista filtrada por posición del jugador y luego imprime los nombres, las
-    # posiciones y el campo. porcentajes de goles de los jugadores filtrados y ordenados. Si ningún
-    # jugador cumple con los criterios de filtrado, se imprime un mensaje que indica que no se
-    # encontraron jugadores.
-    while True:
-        porcentaje = input("Ingrese el valor de porcentaje para comparar con los tiros de campo: " )
-        if porcentaje.isdigit():
-            porcentaje = float(porcentaje)
-            break
-        else:
-            print("Por favor, ingrese solo números.")
-    
-    jugadores_filtrados = [jugador for jugador in lista_jugadores if jugador["estadisticas"].get("porcentaje_tiros_de_campo", 0) > porcentaje]
-    jugadores_ordenados = sorted(jugadores_filtrados, key=lambda jugador: jugador["posicion"])
 
-    if jugadores_ordenados:
-        print(f"Jugadores con porcentaje de tiros de campo superior a {porcentaje}%:")
-        for jugador in jugadores_ordenados:
-            print("Nombre:", jugador["nombre"])
-            print("Posición:", jugador["posicion"])
-            print("Porcentaje de tiros de campo:", jugador["estadisticas"]["porcentaje_tiros_de_campo"])
-            print()
-    else:
-        print(f"No se encontraron jugadores con porcentaje de tiros de campo superior a {porcentaje}%.")
-"""
 
    
 def mostrar_jugadores_superiores_porcentaje(lista_jugadores: List[Dict[str, any]]):
