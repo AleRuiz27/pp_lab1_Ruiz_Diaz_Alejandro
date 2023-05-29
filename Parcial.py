@@ -106,7 +106,7 @@ def calculo_promedio(lista_jugadores:list[dict],sub_clave:str):
     :type sub_clave: str
     :return: el valor de la variable "promedio", que representa la media de una determinada estadística
     ("sub_clave") para todos los jugadores de la lista de entrada "lista_jugadores". Si la lista de
-    entrada está vacía, la función no ejecutará el ciclo y devolverá Ninguno
+    entrada está vacía, la función no ejecutará el ciclo y devolverá Ninguno.
     """
     acomulador = 0
     contador = 0
@@ -445,6 +445,7 @@ def jugador_con_mas_temporadas(lista_jugadores):
     else:
         print("No se encontraron jugadores.")
 
+"""
 def mostrar_jugadores_superiores_porcentaje(lista_jugadores: List[Dict[str, any]]):
     # El código anterior solicita al usuario que ingrese un valor porcentual, filtra una lista de
     # jugadores de baloncesto en función de que su porcentaje de tiros de campo sea mayor que el valor
@@ -472,28 +473,34 @@ def mostrar_jugadores_superiores_porcentaje(lista_jugadores: List[Dict[str, any]
             print()
     else:
         print(f"No se encontraron jugadores con porcentaje de tiros de campo superior a {porcentaje}%.")
+"""
 
-def obtener_posiciones_rankings(lista_jugadores: List[Dict[str, any]]):
    
-    jugadores_ordenados_puntos = sorted(lista_jugadores, key=lambda jugador: jugador["estadisticas"]["puntos_totales"], reverse=True)
-    jugadores_ordenados_rebotes = sorted(lista_jugadores, key=lambda jugador: jugador["estadisticas"]["rebotes_totales"], reverse=True)
-    jugadores_ordenados_asistencias = sorted(lista_jugadores, key=lambda jugador: jugador["estadisticas"]["asistencias_totales"], reverse=True)
-    jugadores_ordenados_robos = sorted(lista_jugadores, key=lambda jugador: jugador["estadisticas"]["robos_totales"], reverse=True)
+def mostrar_jugadores_superiores_porcentaje(lista_jugadores: List[Dict[str, any]]):
+    # El código anterior toma la entrada del usuario para un valor porcentual y luego filtra una lista
+    # de jugadores de baloncesto en función de que su porcentaje de tiros de campo sea mayor que el
+    # porcentaje de entrada. Luego ordena la lista filtrada por porcentaje de tiros de campo y agrupa
+    # a los jugadores por su posición. Finalmente, imprime los nombres y porcentajes de tiros de campo
+    # de los jugadores filtrados, agrupados por posición.
+    porcentaje = float(input("Ingrese el porcentaje para comparar con los porcentajes de tiro de campo: "))
 
-    
-    jugadores_posiciones = []
-    for i, jugador in enumerate(lista_jugadores):
-        jugador_posicion = {
-            "nombre": jugador["nombre"],
-            "posicion_puntos": i + 1,
-            "posicion_rebotes": i + 1,
-            "posicion_asistencias": i + 1,
-            "posicion_robos": i + 1
-        }
-        jugadores_posiciones.append(jugador_posicion)
+    jugadores_superiores = [jugador for jugador in lista_jugadores if jugador["estadisticas"]["porcentaje_tiros_de_campo"] > porcentaje]
+    jugadores_ordenados = sorted(jugadores_superiores, key=lambda jugador: jugador["estadisticas"]["porcentaje_tiros_de_campo"], reverse=True)
 
-    return jugadores_posiciones
+    jugadores_por_posicion = {}
+    for jugador in jugadores_ordenados:
+        posicion = jugador["posicion"]
+        if posicion not in jugadores_por_posicion:
+            jugadores_por_posicion[posicion] = []
+        jugadores_por_posicion[posicion].append(jugador)
 
+    print("Jugadores con porcentaje de tiro de campo superior a", porcentaje)
+    for posicion, jugadores in jugadores_por_posicion.items():
+        print("POSICIÓN:", posicion)
+        for i, jugador in enumerate(jugadores):
+            print("NOMBRE:", jugador["nombre"])
+            print("PORCENTAJE DE TIRO A CAMPO:", jugador["estadisticas"]["porcentaje_tiros_de_campo"])
+            print()
 while True:
     respuesta = input("Seleccione una opción:\n"
                   "1) Mostrar la lista de todos los jugadores del Dream Team.\n"
@@ -514,7 +521,7 @@ while True:
                   "15) Ingresar un valor y mostrar los jugadores que hayan tenido un porcentaje de tiros triples superior a ese valor.\n"
                   "16) Jugadores con mayor temporadas jugadas.\n"
                   "17) Ingresar un valor y mostrar los jugadores, ordenados por posición en la cancha, que hayan tenido un porcentaje de tiros de campo superior a ese valor.\n"
-                  "18) ingresar un valor y mostrar los jugadores , ordenados por posición en la cancha, que hayan tenido un porcentaje de tiros de campo superior a ese valor.\n"
+                  
                   "Opción: ")
 
   
@@ -592,9 +599,7 @@ while True:
         case 17:
                 mostrar_jugadores_superiores_porcentaje(lista_jugadores)
 
-        case 18: 
-
-                obtener_posiciones_rankings(lista_jugadores)
+      
 
 
     
